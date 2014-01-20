@@ -1,0 +1,3 @@
+C:\workspace\social.sharepoint.api\social.sharepoint.api\bin\Debug\social.sharepoint.api.pdb
+C:\workspace\social.sharepoint.api\social.sharepoint.api\obj\Debug\social.sharepoint.api.dll
+C:\workspace\social.sharepoint.api\social.sharepoint.api\obj\Debug\social.sharepoint.api.pdb

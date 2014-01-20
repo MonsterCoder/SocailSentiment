@@ -1,0 +1,1 @@
+C:\workspace\social.sharepoint.api\social.sharepoint.api\bin\Debug\app.publish\1.0.0.0\social.sharepoint.api.app
