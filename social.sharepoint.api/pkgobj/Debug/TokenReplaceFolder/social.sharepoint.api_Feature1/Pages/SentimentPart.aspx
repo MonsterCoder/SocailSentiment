@@ -9,7 +9,7 @@
 <head>
     <title></title>
 
-    <script type="text/javascript" src="../Scripts/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="../Scripts/knockout-3.0.0.js"></script>
     <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
