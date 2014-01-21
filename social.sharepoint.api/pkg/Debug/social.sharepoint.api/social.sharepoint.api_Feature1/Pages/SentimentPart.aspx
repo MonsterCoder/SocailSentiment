@@ -46,10 +46,10 @@
 <body>
   <div id="socailPart">
     <div class="header">
-    <i class="glyphicon glyphicon-globe"></i>
-    <h2 class="header">
-      Social Sentiment
-    </h2>
+        <i class="glyphicon glyphicon-globe"></i>
+        <h2 class="header">
+            Social Sentiment
+        </h2>
   </div>
 
     <div class="post" data-bind="foreach: posts">   

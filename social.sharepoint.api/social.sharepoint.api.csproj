@@ -83,7 +83,9 @@
     <None Include="Scripts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{2287f7f0-3710-4c2c-9776-ffaccc666739}</SharePointProjectItemId>
     </None>
-    <Content Include="Scripts\Elements.xml" />
+    <Content Include="Scripts\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Scripts\App.js" />
     <Content Include="Scripts\_references.js" />
   </ItemGroup>

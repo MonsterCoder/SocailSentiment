@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <ClientWebPart Name="SentimentPart" Title="Social Sentiment" Description="Aggregates the content from a Facebook account, Twitter account, and displays the recent documents that were added to a site collection." DefaultWidth="480" DefaultHeight="600">
+  <ClientWebPart Name="SentimentPart" Title="Social Sentiment" Description="Aggregates the content from a Facebook account, Twitter account, and displays the recent documents that were added to a site collection." DefaultWidth="600" DefaultHeight="680">
 
     <!-- Content element identifies the location of the page that will render inside the client web part
          Properties are referenced on the query string using the pattern _propertyName_

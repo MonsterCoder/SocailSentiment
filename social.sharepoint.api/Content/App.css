@@ -1,4 +1,22 @@
 ﻿/* Place custom styles below */
+@font-face {
+  font-family: 'Glyphicons Halflings';
+  src: url('../fonts/glyphicons-halflings-regular.eot');
+  src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
 #socailPart {
-    background: red;
+    
+}
+
+#socailPart .header h2, #socailPart i {
+    display: inline-block;
+    margin-right:15px;
+}
+
+#socailPart .header {
+    background-color: #2d3e50;
+    color: white;
+    padding: 7px;
+    font-size: 21px;
 }
