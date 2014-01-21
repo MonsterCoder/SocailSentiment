@@ -43,21 +43,40 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Elements.xml" />
     <Content Include="Pages\SentimentPart.aspx" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.9.1.intellisense.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\knockout-3.0.0.debug.js" />
     <Content Include="Scripts\knockout-3.0.0.js" />
     <Content Include="SentimentPart\Elements.xml">
       <OpcRelationship>feature-elementmanifest</OpcRelationship>
+      <SubType>Designer</SubType>
     </Content>
+    <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="fonts\glyphicons-halflings-regular.svg" />
+    <None Include="fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
     <None Include="Pages\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{610e6217-84c4-46ac-9c8e-8d3e5706a9a7}</SharePointProjectItemId>
     </None>
     <Content Include="Pages\Elements.xml" />
     <Content Include="Pages\Default.aspx" />
+    <None Include="Scripts\jquery-1.9.1.min.map" />
     <None Include="SentimentPart\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{97ab40c4-05a8-4942-83ac-9e257143208d}</SharePointProjectItemId>
+    </None>
+    <None Include="SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a7065153-17dc-480c-b721-8e023f3fe9c5}</SharePointProjectItemId>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -72,7 +91,9 @@
     <None Include="Content\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4043bf86-a945-4ad0-a969-9532d5bb5360}</SharePointProjectItemId>
     </None>
-    <Content Include="Content\Elements.xml" />
+    <Content Include="Content\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Content\App.css" />
   </ItemGroup>
   <ItemGroup>

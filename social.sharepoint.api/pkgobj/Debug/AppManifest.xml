@@ -1,16 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--Published:a2ba41A2-b704-4a9d-a9ed-aecacc1d43ed-->
 <!--Created:cb85b80c-f585-40ff-8bfc-12ff4d0e34a9-->
-<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest"
-     Name="socialsharepointapi"
-     ProductID="{610e6217-84c4-46ac-9c8e-8d3e5706a9a7}"
-     Version="1.0.0.1"
-     SharePointMinVersion="15.0.0.0"
->
+<App xmlns="http://schemas.microsoft.com/sharepoint/2012/app/manifest" Name="socialsharepointapi" ProductID="{610e6217-84c4-46ac-9c8e-8d3e5706a9a7}" Version="1.0.0.1" SharePointMinVersion="15.0.0.0">
   <Properties>
     <Title>social.sharepoint.api</Title>
     <StartPage>~appWebUrl/Pages/Default.aspx?{StandardTokens}</StartPage>
   </Properties>
-
   <AppPrincipal>
     <Internal />
   </AppPrincipal>

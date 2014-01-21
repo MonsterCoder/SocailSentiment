@@ -27,14 +27,4 @@
 <%-- The markup and script in the following Content element will be placed in the <body> of the page --%>
 <asp:Content ContentPlaceHolderID="PlaceHolderMain" runat="server">
 
-    h3 link here
-    <ul data-bind="foreach: posts">
-        <li >      
-            <h3 data-bind="text: title"></h3>   
-            <p data-bind="text: message">
-
-            </p>
-        </li>
-    </ul>
-
 </asp:Content>

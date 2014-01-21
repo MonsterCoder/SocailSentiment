@@ -11,13 +11,15 @@
 
     <script type="text/javascript" src="../Scripts/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="../Scripts/knockout-3.0.0.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
     <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.js"></script>
     <script type="text/javascript" src="../Scripts/App.js" />
     <script type=”text/javascript” src=”http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js”></script>
-
+    <link rel="Stylesheet" type="text/css" href="../Content/app.css" />
+    <link rel="Stylesheet" type="text/css" href="../Content/bootstrap.min.css" />
     <script type="text/javascript">
         'use strict';
 
@@ -42,7 +44,21 @@
     </script>
 </head>
 <body>
+  <div id="socailPart">
+    <div class="header">
+    <i class="glyphicon glyphicon-globe"></i>
+    <h2 class="header">
+      Social Sentiment
+    </h2>
+  </div>
 
+    <div class="post" data-bind="foreach: posts">   
+     <h3 class="title" data-bind="text: title"></h3>   
+     <p class="message" data-bind="text: message">
+
+     </p>
+  </div>
+  </div>
 
 </body>
 </html>
