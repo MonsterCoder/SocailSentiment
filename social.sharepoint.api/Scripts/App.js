@@ -1,26 +1,32 @@
 ﻿'use strict';
 
 var context = SP.ClientContext.get_current();
-var user = context.get_web().get_currentUser();
 
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
-    getUserName();
+
+    getFacebookFeed();
+
 });
 
-// This function prepares, loads, and then executes a SharePoint query to get the current users information
-function getUserName() {
-    context.load(user);
-    context.executeQueryAsync(onGetUserNameSuccess, onGetUserNameFail);
+function getFacebookFeed() {
+    var request = new SP.WebRequestInfo();
+    request.set_url("https://graph.facebook.com/AutomaticDataProcessing/feed?access_token=525131460933427|I1I4Opj4FT25bKL6uwUiFwnJC8s");
+    request.set_method("GET");
+    request.set_headers({ "Accept": "application/json" });
+    var emptyString = SP.ScriptUtility.emptyString;
+
+    var response = SP.WebProxy.invoke(context, request);
+
+    context.executeQueryAsync(onGetFacebookFeedSuccess, onGetFacebookFeedFail);
+    function onGetFacebookFeedSuccess() {
+        alert(response.get_statusCode());
+    }
+
+    function onGetFacebookFeedFail() {
+        alert(response.get_statusCode());
+    }
 }
 
-// This function is executed if the above call is successful
-// It replaces the contents of the 'message' element with the user name
-function onGetUserNameSuccess() {
-    $('#message').text('Hello ' + user.get_title());
-}
 
-// This function is executed if the above call fails
-function onGetUserNameFail(sender, args) {
-    alert('Failed to get user name. Error:' + args.get_message());
-}
+

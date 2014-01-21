@@ -14,6 +14,7 @@
   <AppPrincipal>
     <Internal />
   </AppPrincipal>
-
-
+  <RemoteEndpoints>
+    <RemoteEndpoint Url="https://graph.facebook.com" />
+  </RemoteEndpoints>
 </App>

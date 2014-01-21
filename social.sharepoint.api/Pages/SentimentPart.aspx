@@ -11,6 +11,7 @@
 
     <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
     <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
+    <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.js"></script>
     <script type="text/javascript" src="../Scripts/App.js" />
@@ -41,7 +42,7 @@
 <body>
    <div>
        <p id="message">
-           initializing
+           Loading content...
        </p>
    </div>
 </body>
