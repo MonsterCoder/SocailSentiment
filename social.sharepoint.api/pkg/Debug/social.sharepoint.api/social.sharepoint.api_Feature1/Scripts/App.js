@@ -1,29 +1,45 @@
 ﻿'use strict';
 
 var context = SP.ClientContext.get_current();
-
+var vm = new ViewModel();
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
-    alert("start");
     getFacebookFeed();
-    ko.applyBindings(new ViewModel());
+    ko.applyBindings(vm);
 });
 
 function ViewModel() {
     var self = this;
     self.posts = ko.observableArray();
-    var post = new Post();
-    post.title = " test";
-    self.posts.push(post);
-    var post2 = new Post();
-    post2.title = " test";
-    self.posts.push(post2);
+    self.addFacebookPost = function (data) {
+        var post = new Post();
+        post.type = "fb";
+        post.created_time = data.created_time;
+
+        if (data.type === "link") {
+            post.title = data.name;
+            post.picture = data.picture;
+            post.message = data.message;
+        } else if (data.type === "status") {
+            post.message = data.story;
+        } else {
+            return;
+        }
+
+        self.posts.push(post);
+    }
+
     return self;
 }
 
 function Post() {
     var self = this;
-    self.title = "test";
+    self.title = "";
+    self.type = "";
+    self.picture = "";
+    self.message = "";
+    self.link = "";
+    self.created_time = "";
 }
 
 function getFacebookFeed() {
@@ -39,8 +55,10 @@ function getFacebookFeed() {
     function onGetFacebookFeedSuccess() {
         if (response.get_statusCode() == 200) {
             var ResponseBody = JSON.parse(response.get_body());
-            ko.observableArray([]);
-            alert(ResponseBody.data.length);
+
+            for (var i = 0, len = ResponseBody.data.length; i < len; i++) {
+                vm.addFacebookPost(ResponseBody.data[i]);
+            }
         }
         else {
             var httpCode = response.get_statusCode();

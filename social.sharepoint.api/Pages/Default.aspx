@@ -29,7 +29,11 @@
 
     h3 link here
     <ul data-bind="foreach: posts">
-        <li data-bind="text: title">         
+        <li >      
+            <h3 data-bind="text: title"></h3>   
+            <p data-bind="text: message">
+
+            </p>
         </li>
     </ul>
 
