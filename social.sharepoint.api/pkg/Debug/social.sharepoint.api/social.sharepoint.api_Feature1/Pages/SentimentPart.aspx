@@ -9,12 +9,14 @@
 <head>
     <title></title>
 
-    <script type="text/javascript" src="../Scripts/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../Scripts/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="../Scripts/knockout-3.0.0.js"></script>
     <script type="text/javascript" src="/_layouts/15/MicrosoftAjax.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.js"></script>
     <script type="text/javascript" src="../Scripts/App.js" />
+    <script type=”text/javascript” src=”http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js”></script>
 
     <script type="text/javascript">
         'use strict';

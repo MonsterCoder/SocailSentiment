@@ -21,15 +21,13 @@ function getFacebookFeed() {
     context.executeQueryAsync(onGetFacebookFeedSuccess, onGetFacebookFeedFail);
     function onGetFacebookFeedSuccess() {
         if (response.get_statusCode() == 200) {
-
             var ResponseBody = JSON.parse(response.get_body());
+            ko.observableArray([]);
             alert(ResponseBody.data.length);
         }
         else {
-            var httpCode;
-            var httpText;
-            httpCode =    response.get_statusCode();
-            httpText = response.get_body();
+            var httpCode = response.get_statusCode();
+            var httpText = response.get_body();
         }
 
     }
