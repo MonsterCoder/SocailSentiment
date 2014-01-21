@@ -20,3 +20,16 @@
     padding: 7px;
     font-size: 21px;
 }
+
+#left-nav {
+    background: #30bdeb;
+    color:white;
+    width: 70px;
+    border: 1px solid #30bdeb;
+    font-size: 26px;
+}
+
+#scoialPart #left-nav .active {
+    color: #30bdeb;
+    background:white;
+}

@@ -50,7 +50,15 @@
         <h2 class="header">
             Social Sentiment
         </h2>
-  </div>
+    </div>
+    <div  id="left-nav">
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">All</a></li>
+        <li><a class="text-center" href="#">T</a></li>
+        <li><a class="text-center" href="#">F</a></li>
+        <li><a class="text-center" href="#">S</a></li>
+      </ul>
+    </div>
 
     <div class="post" data-bind="foreach: posts">   
      <h3 class="title" data-bind="text: title"></h3>   
