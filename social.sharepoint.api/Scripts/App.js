@@ -20,7 +20,18 @@ function getFacebookFeed() {
 
     context.executeQueryAsync(onGetFacebookFeedSuccess, onGetFacebookFeedFail);
     function onGetFacebookFeedSuccess() {
-        alert(response.get_statusCode());
+        if (response.get_statusCode() == 200) {
+
+            var ResponseBody = JSON.parse(response.get_body());
+            alert(ResponseBody.data.length);
+        }
+        else {
+            var httpCode;
+            var httpText;
+            httpCode =    response.get_statusCode();
+            httpText = response.get_body();
+        }
+
     }
 
     function onGetFacebookFeedFail() {
