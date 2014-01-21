@@ -42,10 +42,7 @@
     </script>
 </head>
 <body>
-   <div>
-       <p id="message">
-           Loading content...
-       </p>
-   </div>
+
+
 </body>
 </html>

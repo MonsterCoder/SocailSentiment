@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="SharePoint App Feature" Id="81e6b488-3d25-486a-9adb-dcf42a09e58e" Scope="Web" Title="social.sharepoint.api Feature1" Version="1.0.0.0">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Description="SharePoint App Feature" Id="81e6b488-3d25-486a-9adb-dcf42a09e58e" Scope="Web" Title="social.sharepoint.api Feature1" Version="1.0.0.1">
   <ElementManifests>
     <ElementManifest Location="Pages\Elements.xml" />
     <ElementFile Location="Pages\Default.aspx" />

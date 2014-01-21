@@ -4,9 +4,27 @@ var context = SP.ClientContext.get_current();
 
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
+    alert("start");
     getFacebookFeed();
-
+    ko.applyBindings(new ViewModel());
 });
+
+function ViewModel() {
+    var self = this;
+    self.posts = ko.observableArray();
+    var post = new Post();
+    post.title = " test";
+    self.posts.push(post);
+    var post2 = new Post();
+    post2.title = " test";
+    self.posts.push(post2);
+    return self;
+}
+
+function Post() {
+    var self = this;
+    self.title = "test";
+}
 
 function getFacebookFeed() {
     var request = new SP.WebRequestInfo();
@@ -27,12 +45,14 @@ function getFacebookFeed() {
         else {
             var httpCode = response.get_statusCode();
             var httpText = response.get_body();
+            alert(httpText);
         }
 
     }
 
     function onGetFacebookFeedFail() {
         alert(response.get_statusCode());
+        //(response.get_statusCode());
     }
 }
 
