@@ -11,5 +11,6 @@
   </AppPrincipal>
   <RemoteEndpoints>
     <RemoteEndpoint Url="https://graph.facebook.com" />
+    <RemoteEndpoint Url="https://twitter.com" />
   </RemoteEndpoints>
 </App>

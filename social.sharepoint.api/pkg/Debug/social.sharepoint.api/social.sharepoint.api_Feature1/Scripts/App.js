@@ -2,11 +2,37 @@
 
 var context = SP.ClientContext.get_current();
 var vm = new ViewModel();
+var isbusy = false;
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
-    getFacebookFeed();
+    if (isbusy==true) { return }
+    isbusy = true
+    getTwitterPosts();
     ko.applyBindings(vm);
+    isbusy = false;
 });
+
+function getTwitterPosts() {
+    var request = new SP.WebRequestInfo();
+    request.set_url("https://twitter.com/adt");
+    request.set_method("GET");
+
+    var emptyString = SP.ScriptUtility.emptyString;
+
+    var response = SP.WebProxy.invoke(context, request);
+   
+    context.executeQueryAsync(onSuccess, onFail);
+    alert("after");
+    function onSuccess() {
+        alert("success");
+        var ResponseBody = response.get_body();
+        alert(ResponseBody);
+    }
+
+    function onFail() {
+        alert("fail");
+    }
+}
 
 function ViewModel() {
     var self = this;
