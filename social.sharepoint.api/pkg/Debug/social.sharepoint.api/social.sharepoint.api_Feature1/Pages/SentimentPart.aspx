@@ -44,28 +44,34 @@
     </script>
 </head>
 <body>
-  <div id="socailPart">
+  <div id="socialPart">
     <div class="header">
         <i class="glyphicon glyphicon-globe"></i>
         <h2 class="header">
             Social Sentiment
         </h2>
     </div>
-    <div  id="left-nav">
-      <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">All</a></li>
-        <li><a class="text-center" href="#">T</a></li>
-        <li><a class="text-center" href="#">F</a></li>
-        <li><a class="text-center" href="#">S</a></li>
-      </ul>
+    <div id="content" class="content">
+       <div  id="left-nav" class="pull-left">
+          <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#">All</a></li>
+            <li><a class="text-center" href="#">T</a></li>
+            <li><a class="text-center" href="#">F</a></li>
+            <li><a class="text-center" href="#">S</a></li>
+          </ul>
+        </div>
+
+        <div id="post-list"  data-bind="foreach: posts">   
+           <div class="post">
+             <h3 class="title" data-bind="text: title"></h3>   
+             <p class="message" data-bind="text: message">
+
+             </p>
+           </div>
+
+        </div>
     </div>
 
-    <div class="post" data-bind="foreach: posts">   
-     <h3 class="title" data-bind="text: title"></h3>   
-     <p class="message" data-bind="text: message">
-
-     </p>
-  </div>
   </div>
 
 </body>

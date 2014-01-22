@@ -5,16 +5,27 @@
   src: url('../fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/glyphicons-halflings-regular.woff') format('woff'), url('../fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
 }
 
-#socailPart {
-    
+body, html {
+  height: 100%;
 }
 
-#socailPart .header h2, #socailPart i {
+ #socialPart {
+}
+
+#socialPart #content {
+}
+
+#socialPart #content #post-list {
+    height:500px;
+    overflow-y:auto;
+}
+
+#socialPart .header h2, #socialPart i {
     display: inline-block;
     margin-right:15px;
 }
 
-#socailPart .header {
+#socialPart .header {
     background-color: #2d3e50;
     color: white;
     padding: 7px;
@@ -29,7 +40,7 @@
     font-size: 26px;
 }
 
-#scoialPart #left-nav .active {
+#socialPart #left-nav .active {
     color: #30bdeb;
     background:white;
 }
