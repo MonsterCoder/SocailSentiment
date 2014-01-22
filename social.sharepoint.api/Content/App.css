@@ -16,9 +16,21 @@ body, html {
 }
 
 #socialPart #content #post-list {
-    height:500px;
+    height:400px;
     overflow-y:auto;
 }
+
+#socialPart #content #post-list .post {
+    border: 1px solid #303030;
+    padding:5px;
+    margin:5px;
+}
+
+#socialPart #content #post-list .post h3 {
+    font-weight: bold;
+}
+
+
 
 #socialPart .header h2, #socialPart i {
     display: inline-block;
