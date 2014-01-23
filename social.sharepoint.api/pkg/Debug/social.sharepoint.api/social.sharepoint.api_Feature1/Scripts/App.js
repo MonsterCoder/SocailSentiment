@@ -2,17 +2,16 @@
 
 var context = SP.ClientContext.get_current();
 var vm = new ViewModel();
-var isbusy = false;
+
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
-    if (isbusy==true) { return }
-    isbusy = true
     getTwitterPosts();
+    getFacebookFeed();
     ko.applyBindings(vm);
-    isbusy = false;
 });
 
 function getTwitterPosts() {
+
     var request = new SP.WebRequestInfo();
     request.set_url("https://twitter.com/adt");
     request.set_method("GET");
@@ -22,15 +21,31 @@ function getTwitterPosts() {
     var response = SP.WebProxy.invoke(context, request);
    
     context.executeQueryAsync(onSuccess, onFail);
-    alert("after");
     function onSuccess() {
-        alert("success");
-        var ResponseBody = response.get_body();
-        alert(ResponseBody);
+        if (response.get_statusCode() == 200) {
+            var ResponseBody = response.get_body();
+            $("#twitter").html(ResponseBody);
+            $(".stream-item-footer").remove();
+            var tweets = $("#twitter li.stream-item");
+            for (var i = 0, len = tweets.length; i < len; i++) {
+                $("#post-list").append(tweets[i]);
+            }
+           
+         
+        }
+        else {
+            var httpCode = response.get_statusCode();
+            var httpText = response.get_body();
+            alert(httpText);
+        }
+
+       
+
     }
 
     function onFail() {
-        alert("fail");
+
+        alert("Fetching Twitter feeds failed.");
     }
 }
 
@@ -79,6 +94,7 @@ function getFacebookFeed() {
 
     context.executeQueryAsync(onGetFacebookFeedSuccess, onGetFacebookFeedFail);
     function onGetFacebookFeedSuccess() {
+
         if (response.get_statusCode() == 200) {
             var ResponseBody = JSON.parse(response.get_body());
 
@@ -95,8 +111,7 @@ function getFacebookFeed() {
     }
 
     function onGetFacebookFeedFail() {
-        alert(response.get_statusCode());
-        //(response.get_statusCode());
+        alert(response.get_body());
     }
 }
 

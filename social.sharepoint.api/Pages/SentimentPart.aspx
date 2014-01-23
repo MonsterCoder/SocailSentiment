@@ -45,6 +45,9 @@
 </head>
 <body>
   <div id="socialPart">
+    <div id="twitter" class="hide">
+        
+    </div>
     <div class="header">
         <i class="glyphicon glyphicon-globe"></i>
         <h2 class="header">
@@ -61,15 +64,15 @@
           </ul>
         </div>
 
-        <div id="post-list"  data-bind="foreach: posts">   
-           <div class="post">
+        <ul id="post-list"  data-bind="foreach: posts">   
+           <li class="post">
              <h3 class="title" data-bind="text: title"></h3>   
              <p class="message" data-bind="text: message">
 
              </p>
-           </div>
+           </li>
 
-        </div>
+        </ul>
     </div>
 
   </div>
