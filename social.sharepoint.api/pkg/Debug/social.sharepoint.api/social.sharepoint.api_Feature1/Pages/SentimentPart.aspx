@@ -54,15 +54,15 @@
     <div id="content" class="content">
        <div  id="left-nav" class="pull-left">
           <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#">All</a></li>
-            <li><a class="text-center" href="#">T</a></li>
-            <li><a class="text-center" href="#">F</a></li>
-            <li><a class="text-center" href="#">S</a></li>
+            <li class="active" data-bind="click: setFilter.bind($data,'twitter')" ><a href="#">All</a></li>
+            <li data-bind="click: setFilter.bind($data,'twitter')"><a class="text-center" href="#">T</a></li>
+            <li data-bind="click: setFilter.bind($data,'facebook')"><a class="text-center" href="#">F</a></li>
+            <li data-bind="click: setFilter.bind($data,'sharepoint')"><a class="text-center" href="#">S</a></li>
           </ul>
         </div>
         <img id="loadingMsg"  src="../images/loading120.gif" />
         <ul id="post-list"  data-bind="foreach: posts">   
-           <li class="post">
+           <li class="post" data-bind="css: type">
              <h3 class="title" data-bind="text: title"></h3>   
              <p class="message" data-bind="text: message">
 

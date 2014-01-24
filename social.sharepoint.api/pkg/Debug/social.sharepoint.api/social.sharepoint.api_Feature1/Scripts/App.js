@@ -6,8 +6,9 @@ var vm = new ViewModel();
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
     var str = Math.random();
-    if ( $("#loadingMsg").is(':visible')) {
-        setInterval(function () { alert(str)}, 5000);
+    if ($("#loadingMsg").is(':visible')) {
+        load()
+        setInterval(load, 900000);
     }
   
 
@@ -15,9 +16,64 @@ $(document).ready(function () {
 });
 
 function load() {
-        getTwitterPosts();
-        getFacebookFeed();
+  getTwitterPosts();
+  getFacebookFeed();
 }
+
+
+function ViewModel() {
+    var self = this;
+    self.posts = ko.observableArray();
+    self.filter = ko.observable('all');
+    self.addFacebookPost = function (data) {
+        var post = new Post();
+        post.type = "facebook";
+        post.created_time = data.created_time;
+
+        if (data.type === "link") {
+            post.title = data.name;
+            post.picture = data.picture;
+            post.message = data.message;
+        } else if (data.type === "status") {
+            post.message = data.story;
+        } else {
+            return;
+        }
+
+        self.posts.push(post);
+    }
+    
+    self.setFilter = function (d,f) {
+        self.filter(d);
+        var posts = self.posts()
+
+        if (self.filter() != 'all' && self.filter() != 'facebook') {
+            $("li.facebook").hide()
+        } else {
+            $("li.facebook").show()
+        }
+
+        if (self.filter() != 'all' && self.filter() != 'twitter') {
+            $("li.stream-item").hide()
+        } else {
+            $("li.stream-item").show()
+        }
+    };
+
+    return self;
+}
+
+function Post() {
+    var self = this;
+    self.title = "";
+    self.type = "";
+    self.picture = "";
+    self.message = "";
+    self.link = "";
+    self.created_time = "";
+    self.visible= ko.observable(true)
+}
+
 
 function getTwitterPosts() {
     var request = new SP.WebRequestInfo();
@@ -57,40 +113,6 @@ function getTwitterPosts() {
         $("#loadingMsg").hide();
         alert("Fetching Twitter feeds failed.");
     }
-}
-
-function ViewModel() {
-    var self = this;
-    self.posts = ko.observableArray();
-    self.addFacebookPost = function (data) {
-        var post = new Post();
-        post.type = "fb";
-        post.created_time = data.created_time;
-
-        if (data.type === "link") {
-            post.title = data.name;
-            post.picture = data.picture;
-            post.message = data.message;
-        } else if (data.type === "status") {
-            post.message = data.story;
-        } else {
-            return;
-        }
-
-        self.posts.push(post);
-    }
-
-    return self;
-}
-
-function Post() {
-    var self = this;
-    self.title = "";
-    self.type = "";
-    self.picture = "";
-    self.message = "";
-    self.link = "";
-    self.created_time = "";
 }
 
 function getFacebookFeed() {
