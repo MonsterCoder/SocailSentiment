@@ -29,18 +29,21 @@ function ViewModel() {
         var post = new Post();
         post.type = "facebook";
         post.created_time = data.created_time;
-
+        post.from = data.from.name;
         if (data.type === "link") {
             post.title = data.name;
             post.picture = data.picture;
             post.message = data.message;
         } else if (data.type === "status") {
-            post.message = data.story;
+            post.message = data.story || ''
+            post.message += data.message ||'';
         } else {
             return;
         }
+        if (post.title + post.message) {
+            self.posts.push(post);
+        }
 
-        self.posts.push(post);
     }
     
     self.setFilter = function (d,f) {
@@ -71,7 +74,8 @@ function Post() {
     self.message = "";
     self.link = "";
     self.created_time = "";
-    self.visible= ko.observable(true)
+    self.visible = ko.observable(true)
+    self.from = "";
 }
 
 
