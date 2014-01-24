@@ -23,6 +23,8 @@
     <ElementFile Location="Content\bootstrap.css" />
     <ElementManifest Location="Images\Elements.xml" />
     <ElementFile Location="Images\AppIcon.png" />
+    <ElementFile Location="Images\loading2.gif" />
+    <ElementFile Location="Images\loading120.gif" />
     <ElementManifest Location="Elements.xml" />
     <ElementFile Location="fonts\glyphicons-halflings-regular.woff" />
     <ElementFile Location="fonts\glyphicons-halflings-regular.ttf" />

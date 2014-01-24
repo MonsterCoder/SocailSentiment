@@ -5,13 +5,21 @@ var vm = new ViewModel();
 
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
-    getTwitterPosts();
-    getFacebookFeed();
+    var str = Math.random();
+    if ( $("#loadingMsg").is(':visible')) {
+        setInterval(function () { alert(str)}, 5000);
+    }
+  
+
     ko.applyBindings(vm);
 });
 
-function getTwitterPosts() {
+function load() {
+        getTwitterPosts();
+        getFacebookFeed();
+}
 
+function getTwitterPosts() {
     var request = new SP.WebRequestInfo();
     request.set_url("https://twitter.com/adt");
     request.set_method("GET");
@@ -22,6 +30,7 @@ function getTwitterPosts() {
    
     context.executeQueryAsync(onSuccess, onFail);
     function onSuccess() {
+        $("#loadingMsg").hide();
         if (response.get_statusCode() == 200) {
             var ResponseBody = response.get_body();
             $("#twitter").html(ResponseBody);
@@ -45,6 +54,7 @@ function getTwitterPosts() {
 
     function onFail() {
 
+        $("#loadingMsg").hide();
         alert("Fetching Twitter feeds failed.");
     }
 }
@@ -94,7 +104,7 @@ function getFacebookFeed() {
 
     context.executeQueryAsync(onGetFacebookFeedSuccess, onGetFacebookFeedFail);
     function onGetFacebookFeedSuccess() {
-
+        $("#loadingMsg").hide();
         if (response.get_statusCode() == 200) {
             var ResponseBody = JSON.parse(response.get_body());
 
@@ -111,6 +121,7 @@ function getFacebookFeed() {
     }
 
     function onGetFacebookFeedFail() {
+        $("#loadingMsg").hide();
         alert(response.get_body());
     }
 }
