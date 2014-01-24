@@ -7,6 +7,7 @@
 
 body, html {
   height: 100%;
+  overflow:hidden !important;
 }
 
  #socialPart {
@@ -47,11 +48,13 @@ body, html {
 }
 
 #left-nav {
-    background: #30bdeb;
+    background: #ccc;
     color:white;
     width: 70px;
     border: 1px solid #30bdeb;
     font-size: 26px;
+    margin-right: 0px;
+    height:100%
 }
 
 #socialPart #left-nav .active {
