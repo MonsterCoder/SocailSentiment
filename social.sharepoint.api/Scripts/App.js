@@ -93,7 +93,7 @@ function getTwitterPosts() {
             $(".stream-item-footer").remove();
             var tweets = $("#twitter li.stream-item");
             for (var i = 0, len = tweets.length; i < len; i++) {
-                $("#post-list").append(tweets[i]);
+                $("#post-list").prepend(tweets[i]);
             }
            
          

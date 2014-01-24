@@ -7,6 +7,7 @@
 
 body, html {
   height: 100%;
+  overflow:hidden !important;
 }
 
  #socialPart {
@@ -21,9 +22,11 @@ body, html {
 }
 
 #socialPart #content #post-list .post {
-    border: 1px solid #303030;
-    padding:5px;
-    margin:5px;
+    border-left: 1px solid rgba(0, 0, 0, .1);
+    border-right: 1px solid rgba(0, 0, 0, .1);
+    background:white !important;
+    padding:12px;
+    margin:0;
 }
 
 #socialPart #content #post-list .post h3 {
@@ -45,11 +48,13 @@ body, html {
 }
 
 #left-nav {
-    background: #30bdeb;
+    background: #ccc;
     color:white;
     width: 70px;
     border: 1px solid #30bdeb;
     font-size: 26px;
+    margin-right: 0px;
+    height:100%
 }
 
 #socialPart #left-nav .active {
