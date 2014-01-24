@@ -17,8 +17,12 @@ body, html {
 }
 
 #socialPart #content #post-list {
-    height:400px;
+    height:100%;
+    padding:0px;
+    padding-bottom:70px;
+
     overflow-y:auto;
+    list-style:none;
 }
 
 #socialPart #content #post-list .post {
@@ -50,11 +54,41 @@ body, html {
 #left-nav {
     background: #ccc;
     color:white;
-    width: 70px;
+    width: 60px;
     border: 1px solid #30bdeb;
-    font-size: 26px;
+    font-size: 16px !important;
     margin-right: 0px;
     height:100%
+}
+
+#left-nav ul{
+    margin-right: 0px;
+}
+
+#left-nav ul li{
+    margin-right: 0px;
+    float: none !important;
+    height: 58px;
+    width:58px;
+    text-align:center;
+    border-bottom:1px solid white;
+    text-shadow:none !important;
+    font-family:"Helvetica Neue,Arial,sans-serif";
+    font-size:13px;
+    font-weight:500;
+
+}
+
+#left-nav ul li a{
+    padding: 0;
+    line-height:58px;
+    height: 58px;
+    text-align:center;
+    text-shadow:none !important;
+    color:#2d3e50 !important;
+
+    
+
 }
 
 #socialPart #left-nav .active {

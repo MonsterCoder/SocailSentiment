@@ -1,12 +1,15 @@
 ﻿'use strict';
 
 var context = SP.ClientContext.get_current();
+var twitterUrl = '';
+var facebookName = '';
 var vm = new ViewModel();
 
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
-    var str = Math.random();
+
     if ($("#loadingMsg").is(':visible')) {
+        getProperties();
         load()
         setInterval(load, 900000);
     }
@@ -81,7 +84,7 @@ function Post() {
 
 function getTwitterPosts() {
     var request = new SP.WebRequestInfo();
-    request.set_url("https://twitter.com/adt");
+    request.set_url(twitterUrl);
     request.set_method("GET");
 
     var emptyString = SP.ScriptUtility.emptyString;
@@ -121,7 +124,7 @@ function getTwitterPosts() {
 
 function getFacebookFeed() {
     var request = new SP.WebRequestInfo();
-    request.set_url("https://graph.facebook.com/AutomaticDataProcessing/feed?access_token=525131460933427|I1I4Opj4FT25bKL6uwUiFwnJC8s");
+    request.set_url("https://graph.facebook.com/" + facebookName + "/feed?access_token=525131460933427|I1I4Opj4FT25bKL6uwUiFwnJC8s");
     request.set_method("GET");
     request.set_headers({ "Accept": "application/json" });
     var emptyString = SP.ScriptUtility.emptyString;
@@ -149,6 +152,30 @@ function getFacebookFeed() {
     function onGetFacebookFeedFail() {
         $("#loadingMsg").hide();
         alert(response.get_body());
+    }
+
+}
+
+
+function getProperties() {
+
+    if (document.URL.indexOf('?') != -1) {
+        var params = document.URL.split('?')[1].split('&');
+        for (var i = 0; i < params.length; i++) {
+            var p = decodeURIComponent(params[i]);
+
+            if (/^TwitterUrl=/i.test(p)) {
+                twitterUrl = p.split('=')[1];
+
+
+            }
+
+            if (/^FacbookName=/i.test(p)) {
+                facebookName = p.split('=')[1];
+
+
+            }
+        }
     }
 }
 

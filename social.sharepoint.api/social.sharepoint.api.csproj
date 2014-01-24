@@ -94,6 +94,7 @@
   <ItemGroup>
     <None Include="Content\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{4043bf86-a945-4ad0-a969-9532d5bb5360}</SharePointProjectItemId>
+      <SubType>Designer</SubType>
     </None>
     <Content Include="Content\Elements.xml">
       <SubType>Designer</SubType>

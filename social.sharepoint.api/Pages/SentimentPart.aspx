@@ -16,7 +16,7 @@
     <script type="text/javascript" src="/_layouts/15/sp.core.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.runtime.js"></script>
     <script type="text/javascript" src="/_layouts/15/sp.js"></script>
-    <script type="text/javascript" src="../Scripts/App.js" </script>
+    <script type="text/javascript" src="../Scripts/App.js"> </script>
     <script type=”text/javascript” src=”http://ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0.js”></script>
     <link rel="Stylesheet" type="text/css" href="../Content/app.css" />
     <link rel="Stylesheet" type="text/css" href="../Content/bootstrap.min.css" />
@@ -26,6 +26,8 @@
         // Set the style of the client web part page to be consistent with the host web.
         (function () {
             var hostUrl = '';
+            var twitterUrl = '';
+            var facebookName = '';
             if (document.URL.indexOf('?') != -1) {
                 var params = document.URL.split('?')[1].split('&');
                 for (var i = 0; i < params.length; i++) {
@@ -33,10 +35,23 @@
                     if (/^SPHostUrl=/i.test(p)) {
                         hostUrl = p.split('=')[1];
                         document.write('<link rel="stylesheet" href="' + hostUrl + '/_layouts/15/defaultcss.ashx" />');
-                        break;
+
+                    }
+                    if (/^TwitterUrl=/i.test(p)) {
+                        twitterUrl = p.split('=')[1];
+                        
+
+                    }
+
+                    if (/^FacbookName=/i.test(p)) {
+                        facebookName = p.split('=')[1];
+
+
                     }
                 }
             }
+
+ 
             if (hostUrl == '') {
                 document.write('<link rel="stylesheet" href="/_layouts/15/1033/styles/themable/corev15.css" />');
             }

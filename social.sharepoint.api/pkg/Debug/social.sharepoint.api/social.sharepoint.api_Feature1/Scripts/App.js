@@ -1,6 +1,8 @@
 ﻿'use strict';
 
 var context = SP.ClientContext.get_current();
+var twitterUrl = '';
+var facebookName = '';
 var vm = new ViewModel();
 
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
@@ -29,18 +31,21 @@ function ViewModel() {
         var post = new Post();
         post.type = "facebook";
         post.created_time = data.created_time;
-
+        post.from = data.from.name;
         if (data.type === "link") {
             post.title = data.name;
             post.picture = data.picture;
             post.message = data.message;
         } else if (data.type === "status") {
-            post.message = data.story;
+            post.message = data.story || ''
+            post.message += data.message ||'';
         } else {
             return;
         }
+        if (post.title + post.message) {
+            self.posts.push(post);
+        }
 
-        self.posts.push(post);
     }
     
     self.setFilter = function (d,f) {
@@ -71,13 +76,14 @@ function Post() {
     self.message = "";
     self.link = "";
     self.created_time = "";
-    self.visible= ko.observable(true)
+    self.visible = ko.observable(true)
+    self.from = "";
 }
 
 
 function getTwitterPosts() {
     var request = new SP.WebRequestInfo();
-    request.set_url("https://twitter.com/adt");
+    request.set_url(twitterUrl);
     request.set_method("GET");
 
     var emptyString = SP.ScriptUtility.emptyString;
@@ -117,7 +123,7 @@ function getTwitterPosts() {
 
 function getFacebookFeed() {
     var request = new SP.WebRequestInfo();
-    request.set_url("https://graph.facebook.com/AutomaticDataProcessing/feed?access_token=525131460933427|I1I4Opj4FT25bKL6uwUiFwnJC8s");
+    request.set_url("https://graph.facebook.com/" + facebookName + "/feed?access_token=525131460933427|I1I4Opj4FT25bKL6uwUiFwnJC8s");
     request.set_method("GET");
     request.set_headers({ "Accept": "application/json" });
     var emptyString = SP.ScriptUtility.emptyString;
@@ -145,6 +151,28 @@ function getFacebookFeed() {
     function onGetFacebookFeedFail() {
         $("#loadingMsg").hide();
         alert(response.get_body());
+    }
+
+    function getProperties() {
+
+        if (document.URL.indexOf('?') != -1) {
+            var params = document.URL.split('?')[1].split('&');
+            for (var i = 0; i < params.length; i++) {
+                var p = decodeURIComponent(params[i]);
+
+                if (/^TwitterUrl=/i.test(p)) {
+                    twitterUrl = p.split('=')[1];
+
+
+                }
+
+                if (/^FacbookName=/i.test(p)) {
+                    facebookName = p.split('=')[1];
+
+
+                }
+            }
+        }
     }
 }
 

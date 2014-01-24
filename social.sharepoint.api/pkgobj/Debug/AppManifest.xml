@@ -18,4 +18,8 @@
     <RemoteEndpoint Url="https://graph.facebook.com" />
     <RemoteEndpoint Url="https://twitter.com" />
   </RemoteEndpoints>
+  <AppPermissionRequests AllowAppOnlyPolicy="true" >
+    <AppPermissionRequest Scope="http://sharepoint/search" />
+    <AppPermissionRequest Scope="http://sharepoint/content/sitecollection" Right="Read" />
+  </AppPermissionRequests>
 </App>
