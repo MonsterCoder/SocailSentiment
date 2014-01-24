@@ -19,8 +19,9 @@ $(document).ready(function () {
 });
 
 function load() {
-  getTwitterPosts();
-  getFacebookFeed();
+
+    getFacebookFeed();
+    getTwitterPosts();
 }
 
 
@@ -33,9 +34,9 @@ function ViewModel() {
         post.type = "facebook";
         post.created_time = data.created_time;
         post.from = data.from.name;
+        post.picture = "http://graph.facebook.com/"+ data.from.id+"/picture?height=50&width=50"
         if (data.type === "link") {
             post.title = data.name;
-            post.picture = data.picture;
             post.message = data.message;
         } else if (data.type === "status") {
             post.message = data.story || ''
@@ -100,7 +101,7 @@ function getTwitterPosts() {
             $(".stream-item-footer").remove();
             var tweets = $("#twitter li.stream-item");
             for (var i = 0, len = tweets.length; i < len; i++) {
-                $("#post-list").prepend(tweets[i]);
+                $("#post-list").append(tweets[i]);
             }
            
          

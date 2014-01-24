@@ -80,8 +80,12 @@
            <li  data-bind="css: type">
              <div class="tweet post">
                 <div class="content">
-                    <div class="stream-item-header">
-                        <strong class="title" data-bind="text: title"></strong>   
+                    <div class="context">
+                        <img class="pull-left" data-bind="attr: {src: picture}" />
+                        <strong data-bind="text: $data.from"></strong>
+                    </div>
+                    <div class=" stream-item-header">
+                        <small class="title" data-bind="text: title"></small>   
                     </div>
 
                     <p class="tweet-text" data-bind="text: message">
