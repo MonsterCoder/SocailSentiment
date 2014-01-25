@@ -7,7 +7,6 @@ var vm = new ViewModel();
 
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
-
     if ($("#loadingMsg").is(':visible')) {
         getProperties();
         load()
@@ -19,9 +18,12 @@ $(document).ready(function () {
 });
 
 function load() {
+    try {
+        getFacebookFeed();
+        getTwitterPosts();
+    } catch (err) {
+    }
 
-    getFacebookFeed();
-    getTwitterPosts();
 }
 
 
@@ -96,15 +98,13 @@ function getTwitterPosts() {
     function onSuccess() {
         $("#loadingMsg").hide();
         if (response.get_statusCode() == 200) {
-            var ResponseBody = response.get_body();
-            $("#twitter").html(ResponseBody);
-            $(".stream-item-footer").remove();
-            var tweets = $("#twitter li.stream-item");
-            for (var i = 0, len = tweets.length; i < len; i++) {
-                $("#post-list").append(tweets[i]);
-            }
-           
-         
+            var responseBody =String( response.get_body()).replace(/\<script/gi , '<!-->').replace(/script\>/gi, '-->');;
+            $("#twitter").html(responseBody);
+                $(".stream-item-footer").remove();
+                var tweets = $("#twitter li.stream-item");
+                for (var i = 0, len = tweets.length; i < len; i++) {
+                    $("#post-list").append(tweets[i]);
+                }
         }
         else {
             var httpCode = response.get_statusCode();

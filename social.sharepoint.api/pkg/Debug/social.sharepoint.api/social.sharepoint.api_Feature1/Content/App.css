@@ -28,13 +28,23 @@ body, html {
 #socialPart #content #post-list .post {
     border-left: 1px solid rgba(0, 0, 0, .1);
     border-right: 1px solid rgba(0, 0, 0, .1);
-    background:white !important;
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    background: white !important;
     padding:12px;
     margin:0;
 }
 
+#socialPart #content #post-list img {
+    margin-right: 5px;
+}
+
 #socialPart #content #post-list .post h3 {
     font-weight: bold;
+}
+
+#socialPart #content #post-list .post p {
+    padding-left: 55px;
+    margin-top:3px;
 }
 
 

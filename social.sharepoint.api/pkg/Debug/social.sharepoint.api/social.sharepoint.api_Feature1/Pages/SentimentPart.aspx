@@ -26,8 +26,7 @@
         // Set the style of the client web part page to be consistent with the host web.
         (function () {
             var hostUrl = '';
-            var twitterUrl = '';
-            var facebookName = '';
+
             if (document.URL.indexOf('?') != -1) {
                 var params = document.URL.split('?')[1].split('&');
                 for (var i = 0; i < params.length; i++) {
@@ -35,18 +34,7 @@
                     if (/^SPHostUrl=/i.test(p)) {
                         hostUrl = p.split('=')[1];
                         document.write('<link rel="stylesheet" href="' + hostUrl + '/_layouts/15/defaultcss.ashx" />');
-
-                    }
-                    if (/^TwitterUrl=/i.test(p)) {
-                        twitterUrl = p.split('=')[1];
-                        
-
-                    }
-
-                    if (/^FacbookName=/i.test(p)) {
-                        facebookName = p.split('=')[1];
-
-
+                        break;
                     }
                 }
             }
@@ -65,6 +53,7 @@
         <h2 class="header">
             Social Sentiment
         </h2>
+        <i class="pull-right" />
     </div>
     <div id="content" class="content">
        <div  id="left-nav" class="pull-left">
@@ -80,8 +69,12 @@
            <li  data-bind="css: type">
              <div class="tweet post">
                 <div class="content">
-                    <div class="stream-item-header">
-                        <strong class="title" data-bind="text: title"></strong>   
+                    <div class="context">
+                        <img class="pull-left" data-bind="attr: {src: picture}" />
+                        <strong data-bind="text: $data.from"></strong>
+                    </div>
+                    <div class=" stream-item-header">
+                        <small class="title" data-bind="text: title"></small>   
                     </div>
 
                     <p class="tweet-text" data-bind="text: message">
@@ -97,9 +90,9 @@
     </div>
 
   </div>
-  <div id="twitter" class="hide">
+  <iframe id="twitter" class="hide">
 
-  </div>
+  </iframe>
 
 </body>
 </html>

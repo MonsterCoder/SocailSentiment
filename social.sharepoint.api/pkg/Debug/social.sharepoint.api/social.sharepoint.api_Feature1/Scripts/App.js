@@ -7,8 +7,8 @@ var vm = new ViewModel();
 
 // This code runs when the DOM is ready and creates a context object which is needed to use the SharePoint object model
 $(document).ready(function () {
-    var str = Math.random();
     if ($("#loadingMsg").is(':visible')) {
+        getProperties();
         load()
         setInterval(load, 900000);
     }
@@ -18,8 +18,12 @@ $(document).ready(function () {
 });
 
 function load() {
-  getTwitterPosts();
-  getFacebookFeed();
+    try {
+        getFacebookFeed();
+        getTwitterPosts();
+    } catch (err) {
+    }
+
 }
 
 
@@ -32,9 +36,9 @@ function ViewModel() {
         post.type = "facebook";
         post.created_time = data.created_time;
         post.from = data.from.name;
+        post.picture = "http://graph.facebook.com/"+ data.from.id+"/picture?height=50&width=50"
         if (data.type === "link") {
             post.title = data.name;
-            post.picture = data.picture;
             post.message = data.message;
         } else if (data.type === "status") {
             post.message = data.story || ''
@@ -94,15 +98,13 @@ function getTwitterPosts() {
     function onSuccess() {
         $("#loadingMsg").hide();
         if (response.get_statusCode() == 200) {
-            var ResponseBody = response.get_body();
-            $("#twitter").html(ResponseBody);
-            $(".stream-item-footer").remove();
-            var tweets = $("#twitter li.stream-item");
-            for (var i = 0, len = tweets.length; i < len; i++) {
-                $("#post-list").prepend(tweets[i]);
-            }
-           
-         
+            var responseBody =String( response.get_body()).replace(/\<script/gi , '<!-->').replace(/script\>/gi, '-->');;
+            $("#twitter").html(responseBody);
+                $(".stream-item-footer").remove();
+                var tweets = $("#twitter li.stream-item");
+                for (var i = 0, len = tweets.length; i < len; i++) {
+                    $("#post-list").append(tweets[i]);
+                }
         }
         else {
             var httpCode = response.get_statusCode();
@@ -153,24 +155,26 @@ function getFacebookFeed() {
         alert(response.get_body());
     }
 
-    function getProperties() {
-
-        if (document.URL.indexOf('?') != -1) {
-            var params = document.URL.split('?')[1].split('&');
-            for (var i = 0; i < params.length; i++) {
-                var p = decodeURIComponent(params[i]);
-
-                if (/^TwitterUrl=/i.test(p)) {
-                    twitterUrl = p.split('=')[1];
+}
 
 
-                }
+function getProperties() {
 
-                if (/^FacbookName=/i.test(p)) {
-                    facebookName = p.split('=')[1];
+    if (document.URL.indexOf('?') != -1) {
+        var params = document.URL.split('?')[1].split('&');
+        for (var i = 0; i < params.length; i++) {
+            var p = decodeURIComponent(params[i]);
+
+            if (/^TwitterUrl=/i.test(p)) {
+                twitterUrl = p.split('=')[1];
 
 
-                }
+            }
+
+            if (/^FacbookName=/i.test(p)) {
+                facebookName = p.split('=')[1];
+
+
             }
         }
     }

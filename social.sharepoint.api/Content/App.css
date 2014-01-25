@@ -25,13 +25,14 @@ body, html {
     list-style:none;
 }
 
-#socialPart #content #post-list .post {
+#socialPart #content #post-list .post, .tweet {
     border-left: 1px solid rgba(0, 0, 0, .1);
     border-right: 1px solid rgba(0, 0, 0, .1);
     border-bottom: 1px solid rgba(0, 0, 0, .1);
     background: white !important;
     padding:12px;
     margin:0;
+    font-style:normal;
 }
 
 #socialPart #content #post-list img {
