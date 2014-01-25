@@ -18,9 +18,10 @@ $(document).ready(function () {
 });
 
 function load() {
+    getSharepoint()
     try {
-        getFacebookFeed();
-        getTwitterPosts();
+        //getFacebookFeed();
+        //getTwitterPosts();
     } catch (err) {
     }
 
@@ -82,6 +83,39 @@ function Post() {
     self.created_time = "";
     self.visible = ko.observable(true)
     self.from = "";
+}
+
+function getSharepoint() {
+    var request = new SP.WebRequestInfo();
+    request.set_url(twitterUrl);
+    request.set_method("GET");
+
+    var emptyString = SP.ScriptUtility.emptyString;
+
+    var response = SP.WebProxy.invoke(context, request);
+
+    context.executeQueryAsync(onSuccess, onFail);
+    function onSuccess() {
+        $("#loadingMsg").hide();
+        if (response.get_statusCode() == 200) {
+            var responseBody = response.get_body();
+
+        }
+        else {
+            var httpCode = response.get_statusCode();
+            var httpText = response.get_body();
+            alert(httpText);
+        }
+
+
+
+    }
+
+    function onFail() {
+
+        $("#loadingMsg").hide();
+        alert("Fetching Twitter feeds failed.");
+    }
 }
 
 
@@ -156,7 +190,6 @@ function getFacebookFeed() {
     }
 
 }
-
 
 function getProperties() {
 
